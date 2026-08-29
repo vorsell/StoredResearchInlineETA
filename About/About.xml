@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Stored Research Inline ETA</name>
+  <author>Vorsel</author>
+  <packageId>vorsel.storedresearch.inlineeta</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Leoltron.StoredResearch</li>
+  </loadAfter>
+  <description>Appends an estimated research completion time to the final research progress line in the lower-left inspect pane. When Stored Research is active, available stored research points are deducted from the remaining cost.
+
+The feature concept was inspired by Show Research ETA by pureMJ:
+https://steamcommunity.com/sharedfiles/filedetails/?id=3283434105</description>
+</ModMetaData>
