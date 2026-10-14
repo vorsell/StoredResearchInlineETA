@@ -5,6 +5,7 @@
   <packageId>vorsel.storedresearch.inlineeta</packageId>
   <supportedVersions>
     <li>1.6</li>
+    <li>1.7</li>
   </supportedVersions>
   <modDependencies>
     <li>
@@ -17,7 +18,7 @@
     <li>brrainz.harmony</li>
     <li>Leoltron.StoredResearch</li>
   </loadAfter>
-  <description>Appends an estimated research completion time to the final research progress line in the lower-left inspect pane. When Stored Research is active, available stored research points are deducted from the remaining cost.
+  <description>Shows estimated research time alongside the final research progress line in the lower-left inspect pane. If the combined text does not fit, the ETA label and time move together to the next line. When Stored Research is active, available stored research points are deducted from the remaining cost.
 
 The feature concept was inspired by Show Research ETA by pureMJ:
 https://steamcommunity.com/sharedfiles/filedetails/?id=3283434105</description>

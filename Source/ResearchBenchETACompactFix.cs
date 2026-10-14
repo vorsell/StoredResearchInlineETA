@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ResearchBenchETACompactFix
@@ -26,8 +27,12 @@ namespace ResearchBenchETACompactFix
         // older companion mod; this is not the label used for our inline UI.
         private const string LegacyStandaloneEtaPrefix = "<b>ETA</b>:";
 
+        // DrawInspectString passes takeScrollbarSpaceEvenIfNoScrollbar = true
+        // to Widgets.LabelScrollable in both RimWorld 1.6 and 1.7.
+        private const float InspectScrollbarWidth = 16f;
+
         [HarmonyPrefix]
-        public static void Prefix(ref string __0)
+        public static void Prefix(ref string __0, Rect __1)
         {
             if (string.IsNullOrEmpty(__0))
             {
@@ -75,7 +80,11 @@ namespace ResearchBenchETACompactFix
 
                     if (!string.IsNullOrEmpty(eta))
                     {
-                        line += "  " + etaLabel + ": " + eta;
+                        line = ResearchEtaTextLayout.Append(
+                            line,
+                            etaLabel + ": " + eta,
+                            __1.width - InspectScrollbarWidth,
+                            MeasureInspectTextWidth);
                     }
                 }
 
@@ -83,6 +92,21 @@ namespace ResearchBenchETACompactFix
             }
 
             __0 = string.Join("\n", resultLines);
+        }
+
+        private static float MeasureInspectTextWidth(string text)
+        {
+            GameFont previousFont = Text.Font;
+            try
+            {
+                // Match the font selected by the original DrawInspectString.
+                Text.Font = GameFont.Small;
+                return Text.CalcSize(text).x;
+            }
+            finally
+            {
+                Text.Font = previousFont;
+            }
         }
     }
 
